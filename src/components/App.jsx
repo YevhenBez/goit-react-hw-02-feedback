@@ -1,4 +1,4 @@
-import Statistics from './Statistics';
+import Section from './Section';
 
 export const App = () => {
   return (
@@ -13,7 +13,7 @@ export const App = () => {
       }}
     >
       {/* React homework template */}
-      <Statistics
+      <Section title="Please leave feedback"
         
       />
     </div>
