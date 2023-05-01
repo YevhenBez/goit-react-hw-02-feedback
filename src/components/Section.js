@@ -22,7 +22,8 @@ class Section extends React.Component {
         return (
             <div>
                 <h1>{this.props.title}</h1>
-                <FeedbackOptions options={this.props.buttons} onLeaveFeedback={this.handleLeaveFeedback}/>
+                <FeedbackOptions options={this.props.buttons} onLeaveFeedback={this.handleLeaveFeedback} />
+                <h2>Statistics</h2>
             </div>
         )
     }
