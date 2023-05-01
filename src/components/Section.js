@@ -1,8 +1,9 @@
 import React from 'react';
+import FeedbackOptions from './FeedbackOptions';
 
 class Section extends React.Component {
     static defaultProps = {
-        initialTitle: "Please leave feedback",
+        buttons: ['bad', 'neutral', 'good']
     };
 
     state = {
@@ -10,11 +11,18 @@ class Section extends React.Component {
         neutral: 0,
         bad: 0
     }
+
+    handleLeaveFeedback = (btn) => {
+        this.setState(prevState => ({
+            btn: prevState.btn + 1,
+        }));
+    };
     
     render() {
         return (
             <div>
-                <h1>{this.props.initialTitle}</h1>
+                <h1>{this.props.title}</h1>
+                <FeedbackOptions options={this.props.buttons} onLeaveFeedback={this.handleLeaveFeedback}/>
             </div>
         )
     }
