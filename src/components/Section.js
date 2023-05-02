@@ -13,10 +13,10 @@ class Section extends React.Component {
         bad: 0
     }
 
-    handleLeaveFeedback = (btn) => {
-        console.log('Кликнули')
+    handleLeaveFeedback = (event) => {
+        const name = event.currentTarget.textContent;
         this.setState(prevState => ({
-            btn: prevState.btn + 1,
+            [name]: prevState[name] + 1,
         }));
     };
 
