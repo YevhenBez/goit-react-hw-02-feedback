@@ -13,11 +13,7 @@ class Section extends React.Component {
         bad: 0
     }
 
-    countTotalFeedback = () => {
-        console.log(Object.values(this.state));
-
-        return Object.values(this.state).reduce((acc, option) => acc + option, 0);
-    }
+    
 
     
     handleLeaveFeedback = (event) => {
@@ -30,11 +26,18 @@ class Section extends React.Component {
         
     };
 
-    countPositiveFeedbackPercentage = () => {
-        return (
-            Math.round((this.state.good / this.countTotalFeedback) * 100)
-        )
+    countTotalFeedback = () => {
+        console.log(Object.values(this.state));
+
+        return Object.values(this.state).reduce((acc, option) => acc + option, 0);
     }
+
+    countPositiveFeedbackPercentage = () => {
+        const { good } = this.state;
+        console.log(this.countTotalFeedback());
+        return Math.round((good / this.countTotalFeedback()) * 100) || 0;
+        
+    };
     
     render() {
         return (
@@ -42,7 +45,7 @@ class Section extends React.Component {
                 <h1>{this.props.title}</h1>
                 <FeedbackOptions options={this.props.buttons} onLeaveFeedback={this.handleLeaveFeedback} />
                 <h2>Statistics</h2>
-                <Statistics good={this.state.good} neutral={this.state.neutral} bad={this.state.bad}  total={this.countTotalFeedback()}/>
+                <Statistics good={this.state.good} neutral={this.state.neutral} bad={this.state.bad}  total={this.countTotalFeedback()} positivePercentage={this.countPositiveFeedbackPercentage()}/>
             </div>
         )
     }
