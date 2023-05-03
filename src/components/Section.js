@@ -1,10 +1,11 @@
 import React from 'react';
 import FeedbackOptions from './FeedbackOptions';
 import Statistics from './Statistics';
+import Notification from './Notification';
 
 class Section extends React.Component {
     static defaultProps = {
-        buttons: ['bad', 'neutral', 'good'],
+        buttons: ['good', 'neutral', 'bad' ],
     };
 
     state = {
@@ -45,7 +46,17 @@ class Section extends React.Component {
                 <h1>{this.props.title}</h1>
                 <FeedbackOptions options={this.props.buttons} onLeaveFeedback={this.handleLeaveFeedback} />
                 <h2>Statistics</h2>
-                <Statistics good={this.state.good} neutral={this.state.neutral} bad={this.state.bad}  total={this.countTotalFeedback()} positivePercentage={this.countPositiveFeedbackPercentage()}/>
+                {this.countTotalFeedback() ? (
+                    <Statistics
+                        good={this.state.good}
+                        neutral={this.state.neutral}
+                        bad={this.state.bad}
+                        total={this.countTotalFeedback()}
+                        positivePercentage={this.countPositiveFeedbackPercentage()}
+                    />
+                ) : (
+                    <Notification message="There is no feedback" />
+                )}
             </div>
         )
     }
