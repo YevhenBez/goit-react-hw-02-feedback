@@ -2,6 +2,8 @@ import React from 'react';
 import FeedbackOptions from './FeedbackOptions';
 import Statistics from './Statistics';
 import Notification from './Notification';
+import css from 'statistics.module.css';
+
 
 class Section extends React.Component {
     static defaultProps = {
@@ -46,17 +48,19 @@ class Section extends React.Component {
                 <h1>{this.props.title}</h1>
                 <FeedbackOptions options={this.props.buttons} onLeaveFeedback={this.handleLeaveFeedback} />
                 <h2>Statistics</h2>
-                {this.countTotalFeedback() ? (
-                    <Statistics
-                        good={this.state.good}
-                        neutral={this.state.neutral}
-                        bad={this.state.bad}
-                        total={this.countTotalFeedback()}
-                        positivePercentage={this.countPositiveFeedbackPercentage()}
-                    />
-                ) : (
-                    <Notification message="There is no feedback" />
-                )}
+                    <div className={css.statistics}>
+                        {this.countTotalFeedback() ? (
+                                <Statistics
+                                        good={this.state.good}
+                                        neutral={this.state.neutral}
+                                        bad={this.state.bad}
+                                        total={this.countTotalFeedback()}
+                                        positivePercentage={this.countPositiveFeedbackPercentage()}
+                                />
+                        ) : (
+                            <Notification message="There is no feedback" />
+                        )}
+                    </div>
             </div>
         )
     }
