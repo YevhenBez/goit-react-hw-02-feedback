@@ -2,7 +2,7 @@ import React from 'react';
 import FeedbackOptions from './FeedbackOptions';
 import Statistics from './Statistics';
 import Notification from './Notification';
-import css from 'statistics.module.css';
+
 
 
 class Section extends React.Component {
@@ -48,7 +48,7 @@ class Section extends React.Component {
                 <h1>{this.props.title}</h1>
                 <FeedbackOptions options={this.props.buttons} onLeaveFeedback={this.handleLeaveFeedback} />
                 <h2>Statistics</h2>
-                    <div className={css.statistics}>
+                    <div>
                         {this.countTotalFeedback() ? (
                                 <Statistics
                                         good={this.state.good}
