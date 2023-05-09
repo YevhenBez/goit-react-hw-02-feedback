@@ -5,11 +5,7 @@ import Statistics from './Statistics';
 import Notification from './Notification';
 
 class App extends React.Component {
-  static defaultProps = {
-        buttons: ['good', 'neutral', 'bad' ],
-    };
-
-    state = {
+      state = {
         good: 0,
         neutral: 0,
         bad: 0
@@ -53,7 +49,7 @@ class App extends React.Component {
         {/* React homework template */}
         <div>
           <Section title="Please leave feedback">
-            <FeedbackOptions options={this.props.buttons} onLeaveFeedback={this.handleLeaveFeedback} />
+            <FeedbackOptions options={Object.keys(this.state)} onLeaveFeedback={this.handleLeaveFeedback} />
           </Section>
           <Section title="Statistics">
             {this.countTotalFeedback() ? (
