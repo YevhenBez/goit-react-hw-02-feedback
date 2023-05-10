@@ -1,5 +1,5 @@
 import React from 'react';
-import css from 'statistics.module.css';
+import css from './css/statistics.module.css';
 import PropTypes from 'prop-types';
 
 const Statistics = ({ good, neutral, bad, total, positivePercentage }) => (
